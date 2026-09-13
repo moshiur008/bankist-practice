@@ -31,3 +31,25 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+//Enable smooth scrolling
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  //console.log(e.target.getBoundingClientRect());
+  // console.log(s1coords);
+  // console.log('Current scroll x/y', pageXOffset, pageYOffset);//depreceted
+  // console.log('Current scroll x/y', scrollX, scrollY);
+  // console.log(document.documentElement.clientHeight); //viewport height
+  // console.log(document.documentElement.clientWidth); //viewport width
+  // window.scrollTo(s1coords.left, s1coords.top + scrollY);
+  // window.scrollTo({
+  //   left: s1coords.left,
+  //   top: s1coords.top + scrollY,
+  //   behavior: 'smooth',
+  // });
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
