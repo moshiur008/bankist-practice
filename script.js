@@ -77,3 +77,27 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+//Tabbed Content
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  const activeTab = e.target.closest('.operations__tab');
+
+  //Guard Clause
+  if (!activeTab) return;
+
+  //Remove Active Classes
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  //Activate tab
+  activeTab.classList.add('operations__tab--active');
+
+  //Activate Content
+  document
+    .querySelector(`.operations__content--${activeTab.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
